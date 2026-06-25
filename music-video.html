@@ -1,0 +1,389 @@
+<!-- 618 MEDIA — Music Video Landing Page v2
+     Squarespace Code Block. Disable header + footer in Page Settings > Advanced.
+     No global tags. CSS scoped to .mv2. -->
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '987926117385270');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=987926117385270&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap');
+
+:root {
+  --orange: #E5421A;
+  --orange-dark: #C93A14;
+  --ink: #0a0a0a;
+  --ink-2: #141414;
+  --surface: #111111;
+  --text: #EDEAE5;
+  --text-50: rgba(237,234,229,0.5);
+  --text-25: rgba(237,234,229,0.25);
+  --rule: rgba(237,234,229,0.07);
+  --ease-out: cubic-bezier(0.23,1,0.32,1);
+  --ease-in-out: cubic-bezier(0.77,0,0.175,1);
+}
+
+.mv2 *, .mv2 *::before, .mv2 *::after { box-sizing: border-box; margin: 0; padding: 0; }
+.mv2 { font-family: 'DM Sans', sans-serif; background: var(--ink); color: var(--text); -webkit-font-smoothing: antialiased; }
+.mv2 img { display: block; width: 100%; }
+.mv2 a { text-decoration: none; }
+
+/* HERO */
+.mv2-hero { position: relative; height: 100svh; min-height: 600px; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; }
+.mv2-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: 20% top; transform: scale(1.04); animation: heroZoom 12s var(--ease-in-out) forwards; }
+@keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1.0); } }
+.mv2-hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.1) 35%, rgba(10,10,10,0.75) 70%, rgba(10,10,10,0.97) 100%); }
+.mv2-hero-content { position: relative; z-index: 2; padding: 0 52px 64px; max-width: 960px; }
+.mv2-hero-label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.2s forwards; }
+.mv2-hero-label-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+.mv2-hero-label span { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-50); }
+.mv2-hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(48px, 7vw, 88px); line-height: 0.97; letter-spacing: -0.025em; color: var(--text); margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s var(--ease-out) 0.38s forwards; }
+.mv2-hero h1 em { font-style: italic; color: var(--orange); }
+.mv2-hero-cta { opacity: 0; animation: fadeUp 0.7s var(--ease-out) 0.55s forwards; }
+.mv2-btn { display: inline-flex; align-items: center; gap: 10px; background: var(--orange); color: #fff !important; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; padding: 15px 28px; border-radius: 2px; border: none; cursor: pointer; transition: background 180ms ease, transform 150ms var(--ease-out); }
+.mv2-btn:active { transform: scale(0.97); }
+@media (hover: hover) and (pointer: fine) { .mv2-btn:hover { background: var(--orange-dark); transform: translateY(-1px); } }
+
+/* MARQUEE */
+.mv2-strip { background: var(--orange); overflow: hidden; padding: 11px 0; white-space: nowrap; }
+.mv2-strip-track { display: inline-flex; gap: 0; animation: marquee 22s linear infinite; }
+.mv2-strip-item { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.85); padding: 0 36px; }
+.mv2-strip-item::before { content: '—  '; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* VIDEO */
+.mv2-video { background: var(--surface); padding: 88px 52px; }
+.mv2-video-inner { max-width: 960px; }
+.mv2-video-header { margin-bottom: 40px; }
+.mv2-tag { font-size: 10px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+.mv2-video-title { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 4vw, 48px); line-height: 1.0; letter-spacing: -0.02em; color: var(--text); }
+.mv2-video-title em { font-style: italic; color: var(--orange); }
+.mv2-video-desc { margin-top: 14px; font-size: 14px; font-weight: 300; color: var(--text-50); line-height: 1.65; max-width: 480px; }
+.mv2-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; background: #000; border-radius: 2px; }
+.mv2-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+
+/* CAPS */
+.mv2-caps { background: var(--ink); padding: 88px 52px; }
+.mv2-caps-inner { max-width: 960px; }
+.mv2-caps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-top: 48px; }
+.mv2-cap-item { background: var(--ink); padding: 40px 36px; position: relative; overflow: hidden; opacity: 0; transform: translateY(16px); transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out); }
+.mv2-cap-item.mv2-in { opacity: 1; transform: translateY(0); }
+.mv2-cap-item:nth-child(2) { transition-delay: 0.08s; }
+.mv2-cap-item:nth-child(3) { transition-delay: 0.16s; }
+.mv2-cap-item:nth-child(4) { transition-delay: 0.24s; }
+.mv2-cap-item::before { content: ''; position: absolute; top: 0; left: 0; right: 100%; height: 2px; background: var(--orange); transition: right 0.35s var(--ease-out); }
+@media (hover: hover) and (pointer: fine) { .mv2-cap-item:hover::before { right: 0; } }
+.mv2-cap-num { font-family: 'DM Serif Display', serif; font-size: 11px; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 20px; }
+.mv2-cap-title { font-family: 'DM Serif Display', serif; font-size: 22px; line-height: 1.15; color: var(--text); margin-bottom: 10px; }
+.mv2-cap-body { font-size: 13px; font-weight: 300; color: var(--text-50); line-height: 1.65; }
+
+/* PROCESS */
+.mv2-process { background: var(--surface); padding: 88px 52px; }
+.mv2-process-inner { max-width: 960px; }
+.mv2-process-list { margin-top: 52px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--rule); }
+.mv2-process-item { display: grid; grid-template-columns: 80px 1fr; gap: 0; padding: 28px 0; border-bottom: 1px solid var(--rule); opacity: 0; transform: translateY(16px); transition: opacity 0.55s var(--ease-out), transform 0.55s var(--ease-out); }
+.mv2-process-item.mv2-in { opacity: 1; transform: translateY(0); }
+.mv2-process-item:nth-child(2) { transition-delay: 0.07s; }
+.mv2-process-item:nth-child(3) { transition-delay: 0.14s; }
+.mv2-process-item:nth-child(4) { transition-delay: 0.21s; }
+.mv2-process-num { font-family: 'DM Serif Display', serif; font-size: 13px; letter-spacing: 0.08em; color: var(--orange); padding-top: 3px; }
+.mv2-process-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.mv2-process-desc { font-size: 13px; font-weight: 300; color: var(--text-50); line-height: 1.6; }
+
+/* FORM */
+.mv2-form-section { background: var(--ink); padding: 88px 52px; position: relative; overflow: hidden; }
+.mv2-form-section::before { content: ''; position: absolute; top: -120px; right: -120px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(229,66,26,0.12) 0%, transparent 70%); pointer-events: none; }
+.mv2-form-inner { position: relative; z-index: 1; max-width: 600px; }
+.mv2-form-h { font-family: 'DM Serif Display', serif; font-size: clamp(32px, 5vw, 56px); line-height: 0.97; letter-spacing: -0.025em; color: var(--text); margin-bottom: 10px; }
+.mv2-form-sub { font-size: 13px; font-weight: 300; color: var(--text-50); line-height: 1.6; margin-bottom: 40px; max-width: 420px; }
+.q2-form { display: flex; flex-direction: column; gap: 14px; }
+.q2-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.q2-field { display: flex; flex-direction: column; gap: 5px; }
+.q2-field label { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-25); }
+.q2-field input, .q2-field select, .q2-field textarea { background: rgba(237,234,229,0.05); border: 1px solid rgba(237,234,229,0.1); border-radius: 2px; padding: 12px 14px; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--text); outline: none; -webkit-appearance: none; transition: border-color 200ms ease, background 200ms ease; }
+.q2-field input::placeholder, .q2-field textarea::placeholder { color: rgba(237,234,229,0.18); }
+.q2-field input:focus, .q2-field select:focus, .q2-field textarea:focus { border-color: var(--orange); background: rgba(237,234,229,0.07); }
+.q2-field select option { background: #1A1A1A; color: var(--text); }
+.q2-field textarea { resize: vertical; min-height: 90px; }
+.q2-submit { background: var(--orange) !important; color: #fff !important; border: none; border-radius: 2px; padding: 16px 32px; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; align-self: flex-start; display: flex; align-items: center; gap: 8px; transition: background 180ms ease, transform 150ms var(--ease-out); }
+.q2-submit:active { transform: scale(0.97) !important; }
+@media (hover: hover) and (pointer: fine) { .q2-submit:hover { background: var(--orange-dark) !important; transform: translateY(-1px); } }
+.q2-submit:disabled { opacity: 0.55; cursor: not-allowed; }
+.q2-note { font-size: 10px; color: var(--text-25); line-height: 1.55; margin-top: 6px; }
+.q2-success { display: none; padding: 40px 0; }
+.q2-success h3 { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--text); margin-bottom: 8px; }
+.q2-success p { font-size: 13px; color: var(--text-50); }
+
+/* FOOTER */
+.mv2-footer { background: #060606; padding: 20px 52px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; border-top: 1px solid var(--rule); }
+.mv2-footer span { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-25); }
+
+/* SHARED */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+.mv2-reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out); }
+.mv2-reveal.mv2-in { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mv2-hero-bg { animation: none; transform: scale(1); }
+  .mv2-strip-track { animation: none; }
+  .mv2-cap-item { transition: none; }
+  .mv2-process-item, .mv2-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 680px) {
+  .mv2-hero-content { padding: 0 24px 52px; }
+  .mv2-video, .mv2-caps, .mv2-process, .mv2-form-section, .mv2-footer { padding-left: 24px; padding-right: 24px; }
+  .mv2-caps-grid { grid-template-columns: 1fr; }
+  .q2-row { grid-template-columns: 1fr; }
+  .mv2-process-item { grid-template-columns: 56px 1fr; }
+}
+</style>
+
+<div class="mv2">
+
+  <!-- HERO -->
+  <section class="mv2-hero">
+    <div class="mv2-hero-bg" style="background-image:url('data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAcFBQYFBAcGBgYIBwcICxILCwoKCxYPEA0SGhYbGhkWGRgcICgiHB4mHhgZIzAkJiorLS4tGyIyNTEsNSgsLSz/2wBDAQcICAsJCxULCxUsHRkdLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCwsLCz/wAARCABkAGQDASIAAhEBAxEB/8QAGwABAAMBAQEBAAAAAAAAAAAAAAQFBgMCAQf/xAAzEAACAQMCBAQEBQUBAAAAAAABAgMABBEFEiExQVFhBhMicYEUMpGhscHR8CNCUuH/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/8QAFBEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEQMRAD8A/dKUpQKUpQKUpQKUpQKUpQKUpQKUpQKUpQKUpQKUpQKUpQKUpQKUpQKUpQKUr5kljijaSV1RFGSzHAFAduVePNFGcSSop7sBS3Gnb+cSW0CKf8r7wPiKZWL9W8OQCZSx+JNBqSPHGMu6qPUis4/EtXbbHIsn+12fjUfaX6l8M2JfLiOlgvpgjrXzLq1pCxRpCXH5Y1LY9SKDcrA1W1kl1CAROP8JpBk+hAqpuPFN3K5NpatGv5pGzj6fvWYdRuJJRLJdTO44dn3Y+tBt6pqtwIBa2MDSPIm4hVBb3rn4a1qwlPm34igRsM7TdWP8A+9MbS+uY3bF0+x8kS7gAfXjFc+p6eLqYHfIkwXd/UQgFB32+v7p1MEscoP5WUH8VoLrWrbT2FwIpC+cbmGBj6Vi3Wo3kUuIrO3Yk5+FD/TJFZ9zcXNw5e4uJJW9XYmg30Gu2c7BZt0BPGU+n71phgRVYGQowBBBwa5bCwnu3JDxrCPiMh2g/t3NbbaFnAOWcEGg5pQoJAOT2pSgUpSgUpSgUpSgVx3cK3FnPAx2iWNkJ9iMV2UoI3T9Pgt9PiinlMzAfEScDPpxUd4n8KWepadJDag/OJ3QFclgM/cVs0oILwtp8lpE1zcjbNMAFQjlR6n61O0pQKUpQKUpQKUpQf/Z')"></div>
+    <div class="mv2-hero-content">
+      <div class="mv2-hero-label">
+        <span class="mv2-hero-label-dot"></span>
+        <span>Music Video Production</span>
+      </div>
+      <h1>Your track<br>deserves to be<br><em>seen.</em></h1>
+      <div class="mv2-hero-cta">
+        <a href="#mv2-contact" class="mv2-btn" style="color:#fff !important;">
+          Start a project
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <div class="mv2-strip" aria-hidden="true">
+    <div class="mv2-strip-track">
+      <span class="mv2-strip-item">Music videos</span>
+      <span class="mv2-strip-item">Performance</span>
+      <span class="mv2-strip-item">Narrative</span>
+      <span class="mv2-strip-item">Concept</span>
+      <span class="mv2-strip-item">Direction</span>
+      <span class="mv2-strip-item">Colour grade</span>
+      <span class="mv2-strip-item">Final cut</span>
+      <span class="mv2-strip-item">Music videos</span>
+      <span class="mv2-strip-item">Performance</span>
+      <span class="mv2-strip-item">Narrative</span>
+      <span class="mv2-strip-item">Concept</span>
+      <span class="mv2-strip-item">Direction</span>
+      <span class="mv2-strip-item">Colour grade</span>
+      <span class="mv2-strip-item">Final cut</span>
+    </div>
+  </div>
+
+  <!-- VIDEO -->
+  <section class="mv2-video">
+    <div class="mv2-video-inner">
+      <div class="mv2-video-header mv2-reveal">
+        <p class="mv2-tag">Recent work</p>
+        <h2 class="mv2-video-title">Fadi Moubayed &mdash; <em>Whole Night</em></h2>
+        <p class="mv2-video-desc">Shot across Sydney over two days. Iron Cove Bridge, North Sydney Oval, Rose Bay, Sydney CBD, Balls Head Reserve at sunrise.</p>
+      </div>
+      <div class="mv2-embed mv2-reveal">
+        <iframe src="https://www.youtube.com/embed/3Pe8gyl6VHs" title="Fadi Moubayed - Whole Night | 618 Media" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="mv2-caps">
+    <div class="mv2-caps-inner">
+      <p class="mv2-tag mv2-reveal">What we make</p>
+      <div class="mv2-caps-grid">
+        <div class="mv2-cap-item">
+          <p class="mv2-cap-num">01</p>
+          <h3 class="mv2-cap-title">Performance</h3>
+          <p class="mv2-cap-body">Artist-forward and visually driven. Built for YouTube, Spotify Canvas, and social.</p>
+        </div>
+        <div class="mv2-cap-item">
+          <p class="mv2-cap-num">02</p>
+          <h3 class="mv2-cap-title">Narrative</h3>
+          <p class="mv2-cap-body">Story-driven. Scripted, location-scouted, directed to extend the meaning of the track.</p>
+        </div>
+        <div class="mv2-cap-item">
+          <p class="mv2-cap-num">03</p>
+          <h3 class="mv2-cap-title">Concept</h3>
+          <p class="mv2-cap-body">Abstract and visual. When the idea matters as much as the image.</p>
+        </div>
+        <div class="mv2-cap-item">
+          <p class="mv2-cap-num">04</p>
+          <h3 class="mv2-cap-title">Live performance</h3>
+          <p class="mv2-cap-body">Concert, venue, or staged setup. Captures how you perform, not just how you look.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="mv2-process">
+    <div class="mv2-process-inner">
+      <p class="mv2-tag mv2-reveal">How it works</p>
+      <div class="mv2-process-list">
+        <div class="mv2-process-item">
+          <span class="mv2-process-num">01</span>
+          <div class="mv2-process-text">
+            <p class="mv2-process-title">Brief</p>
+            <p class="mv2-process-desc">We talk through the track, the vision, the references. You leave with a clear picture of what your video will look and feel like.</p>
+          </div>
+        </div>
+        <div class="mv2-process-item">
+          <span class="mv2-process-num">02</span>
+          <div class="mv2-process-text">
+            <p class="mv2-process-title">Pre-production</p>
+            <p class="mv2-process-desc">Concept lock, locations, shot list, schedule. Nothing is left to chance on shoot day.</p>
+          </div>
+        </div>
+        <div class="mv2-process-item">
+          <span class="mv2-process-num">03</span>
+          <div class="mv2-process-text">
+            <p class="mv2-process-title">Shoot</p>
+            <p class="mv2-process-desc">We come to you. Professional kit, day and night setups.</p>
+          </div>
+        </div>
+        <div class="mv2-process-item">
+          <span class="mv2-process-num">04</span>
+          <div class="mv2-process-text">
+            <p class="mv2-process-title">Post and delivery</p>
+            <p class="mv2-process-desc">Edit, colour grade, full delivery.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM -->
+  <section class="mv2-form-section" id="mv2-contact">
+    <div class="mv2-form-inner">
+      <p class="mv2-tag mv2-reveal">Start a project</p>
+      <h2 class="mv2-form-h mv2-reveal">Tell us about<br>your track.</h2>
+      <p class="mv2-form-sub mv2-reveal">No commitment. We will get back to you and let you know what is possible.</p>
+      <form class="q2-form" id="q2-form">
+        <input type="hidden" name="access_key" value="9b2a3d70-27dc-4684-82a8-3e204796d718">
+        <input type="hidden" name="subject" value="New Music Video Enquiry — Landing Page">
+        <input type="hidden" name="from_name" value="618 Media Music Video Landing Page">
+        <input type="hidden" name="redirect" value="false">
+        <div class="q2-row">
+          <div class="q2-field">
+            <label for="q2-name">Artist name *</label>
+            <input type="text" id="q2-name" name="name" placeholder="Your artist name" required>
+          </div>
+          <div class="q2-field">
+            <label for="q2-phone">Phone *</label>
+            <input type="tel" id="q2-phone" name="phone" placeholder="04xx xxx xxx" required>
+          </div>
+        </div>
+        <div class="q2-field">
+          <label for="q2-email">Email *</label>
+          <input type="email" id="q2-email" name="email" placeholder="you@email.com" required>
+        </div>
+        <div class="q2-field">
+          <label for="q2-song">Song or project name</label>
+          <input type="text" id="q2-song" name="song" placeholder="Track title">
+        </div>
+        <div class="q2-field">
+          <label for="q2-style">Video style</label>
+          <select id="q2-style" name="video_style">
+            <option value="" disabled selected>Select one</option>
+            <option>Performance</option>
+            <option>Narrative</option>
+            <option>Concept</option>
+            <option>Mix — performance and narrative</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="q2-field">
+          <label for="q2-msg">Vision and timeline</label>
+          <textarea id="q2-msg" name="message" placeholder="What feeling should the video have? Any release date in mind?"></textarea>
+        </div>
+        <button type="submit" class="q2-submit" style="background:var(--orange) !important;color:#fff !important;">
+          Send enquiry
+          <svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M1 11L11 1M11 1H4M11 1V8" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="q2-note">These are estimates only. Contact us for a tailored quote.</p>
+      </form>
+      <div class="q2-success" id="q2-success">
+        <h3>Message received.</h3>
+        <p>We will be in touch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="mv2-footer">
+    <span>618 Media &mdash; Music Video Production Sydney &amp; NSW</span>
+    <span>618media.com.au</span>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('a[href="#mv2-contact"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      e.preventDefault();
+      var t = document.getElementById('mv2-contact');
+      if(t) t.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('mv2-in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+
+  document.querySelectorAll('.mv2-reveal, .mv2-cap-item, .mv2-process-item').forEach(function(el){
+    obs.observe(el);
+  });
+
+  var form = document.getElementById('q2-form');
+  if(!form) return;
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var btn = form.querySelector('.q2-submit');
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    var data = {};
+    new FormData(form).forEach(function(v,k){ data[k]=v; });
+    try {
+      var res = await fetch('https://api.web3forms.com/submit',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify(data)
+      });
+      var json = await res.json();
+      if(json.success){
+        form.style.display = 'none';
+        document.getElementById('q2-success').style.display = 'block';
+      } else {
+        btn.textContent = 'Send enquiry'; btn.disabled = false;
+        alert('Something went wrong. Please email info@618media.com.au directly.');
+      }
+    } catch(err){
+      btn.textContent = 'Send enquiry'; btn.disabled = false;
+      alert('Something went wrong. Please email info@618media.com.au directly.');
+    }
+  });
+})();
+</script>
