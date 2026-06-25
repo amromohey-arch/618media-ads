@@ -407,82 +407,232 @@ src="https://www.facebook.com/tr?id=987926117385270&ev=PageView&noscript=1"
 /* ── MOBILE ───────────────────────────────────────── */
 @media (max-width: 680px) {
 
-  /* ── HERO: stack image above text so full composition is visible ── */
+  /* ════════════════════════════════════════
+     HERO — Image fills screen, text overlays
+     bottom third. No dead space. Scroll cue
+     pulls eye downward immediately.
+  ════════════════════════════════════════ */
   .mv2-hero {
-    height: auto;
-    min-height: unset;
-    display: block;
-  }
-  /* The background-image div becomes a natural-ratio image on mobile */
-  .mv2-hero-bg {
+    height: 100svh;
+    min-height: 560px;
     position: relative;
-    inset: auto;
-    /* Intrinsic aspect ratio of the hero photo: ~5:8 portrait */
-    width: 100%;
-    aspect-ratio: 5 / 8;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    overflow: hidden;
+  }
+  .mv2-hero-bg {
+    position: absolute;
+    inset: 0;
     background-size: cover;
-    background-position: center top;
+    background-position: center 15%;
     transform: none;
     animation: none;
   }
-  /* Keep the gradient overlay but only on the bottom 40% of the image */
+  /* Strong gradient pulls content up from black base — 
+     text lands on readable dark area, image reads fully above */
   .mv2-hero-bg::after {
     background: linear-gradient(
       to bottom,
-      transparent 55%,
-      rgba(10,10,10,0.65) 78%,
-      rgba(10,10,10,0.98) 100%
+      rgba(0,0,0,0)    0%,
+      rgba(0,0,0,0)   38%,
+      rgba(0,0,0,0.45) 58%,
+      rgba(0,0,0,0.82) 74%,
+      rgba(10,10,10,1) 90%
     );
   }
-  /* Text block sits below the image, on the ink background */
   .mv2-hero-content {
     position: relative;
     z-index: 2;
-    padding: 36px 24px 52px;
+    padding: 0 24px 40px;
+  }
+  .mv2-hero h1 {
+    font-size: clamp(38px, 11vw, 52px);
+    margin-bottom: 24px;
+  }
+  /* Scroll cue — animated chevron beneath CTA */
+  .mv2-hero-content::after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 22px;
+    border-right: 2px solid rgba(237,234,229,0.35);
+    border-bottom: 2px solid rgba(237,234,229,0.35);
+    transform: rotate(45deg);
+    margin: 28px auto 0;
+    animation: scrollCue 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollCue {
+    0%   { opacity: 0; transform: rotate(45deg) translateY(-6px); }
+    50%  { opacity: 1; transform: rotate(45deg) translateY(0); }
+    100% { opacity: 0; transform: rotate(45deg) translateY(6px); }
   }
 
-  /* ── CAPABILITY CARDS: one per screen, scroll through them ── */
+  /* ════════════════════════════════════════
+     MARQUEE STRIP — tighten
+  ════════════════════════════════════════ */
+  .mv2-strip { padding: 9px 0; }
+
+  /* ════════════════════════════════════════
+     VIDEO SECTION — reduce bloated padding
+  ════════════════════════════════════════ */
+  .mv2-video {
+    padding: 48px 24px 52px;
+  }
+  .mv2-video-title {
+    font-size: clamp(22px, 6.5vw, 32px);
+    line-height: 1.05;
+  }
+  .mv2-video-desc {
+    font-size: 13px;
+    margin-top: 10px;
+  }
+  .mv2-video-header { margin-bottom: 28px; }
+
+  /* ════════════════════════════════════════
+     CAPABILITY CARDS — full-screen scroll UX
+     One card = one screen. User swipes through
+     each service like a story beat.
+  ════════════════════════════════════════ */
   .mv2-caps {
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 64px;
-    padding-bottom: 0;
-  }
-  .mv2-caps-inner {
     padding: 0;
+    background: var(--ink);
   }
-  /* Tag sits outside the grid with its own padding */
+  .mv2-caps-inner { padding: 0; }
+  /* Section label floats above the first card */
   .mv2-caps .mv2-tag {
-    padding: 0 24px;
-    margin-bottom: 32px;
+    padding: 52px 24px 0;
     display: block;
+    margin-bottom: 0;
   }
   .mv2-caps-grid {
     grid-template-columns: 1fr;
     gap: 0;
     border: none;
     background: transparent;
+    margin-top: 0;
   }
-  /* Each card: full viewport height so you scroll one at a time */
   .mv2-cap-item {
-    min-height: 80svh;
-    padding: 48px 24px;
+    /* Fill most of the viewport — next card peeks at bottom to signal more */
+    min-height: 78svh;
+    padding: 52px 24px 48px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     border-bottom: 1px solid var(--rule);
+    border-left: none;
+    border-right: none;
+    border-top: none;
     background: var(--ink);
+    /* Override desktop hover line */
+    transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
   }
   .mv2-cap-item:last-child { border-bottom: none; }
-  .mv2-cap-num { font-size: 13px; margin-bottom: 28px; }
-  .mv2-cap-title { font-size: 32px; line-height: 1.08; margin-bottom: 20px; }
-  .mv2-cap-body { font-size: 15px; line-height: 1.7; max-width: 340px; }
+  /* Large number as a visual anchor — fills the upper space */
+  .mv2-cap-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(72px, 22vw, 96px);
+    letter-spacing: -0.04em;
+    color: rgba(229,66,26,0.18);
+    line-height: 1;
+    margin-bottom: auto;
+    padding-top: 0;
+  }
+  .mv2-cap-title {
+    font-size: 36px;
+    line-height: 1.05;
+    margin-bottom: 16px;
+    margin-top: 32px;
+  }
+  .mv2-cap-body {
+    font-size: 15px;
+    line-height: 1.72;
+    color: var(--text-50);
+    max-width: none;
+  }
+  /* Orange accent line becomes a progress indicator feel */
+  .mv2-cap-item::before {
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--orange);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .mv2-cap-item.mv2-in::before { opacity: 1; right: unset; width: 100%; }
 
-  /* ── Other sections ── */
-  .mv2-video, .mv2-process, .mv2-form-section { padding-left: 24px; padding-right: 24px; }
-  .mv2-footer { padding-left: 24px; padding-right: 24px; }
+  /* ════════════════════════════════════════
+     PROCESS SECTION — tighter, readable
+  ════════════════════════════════════════ */
+  .mv2-process {
+    padding: 52px 24px 60px;
+  }
+  .mv2-process-list { margin-top: 36px; }
+  .mv2-process-item {
+    grid-template-columns: 48px 1fr;
+    padding: 24px 0;
+    gap: 0;
+  }
+  .mv2-process-num {
+    font-size: 12px;
+    padding-top: 2px;
+  }
+  .mv2-process-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .mv2-process-desc {
+    font-size: 13px;
+    line-height: 1.65;
+  }
+
+  /* ════════════════════════════════════════
+     FORM SECTION — thumb-friendly, readable
+  ════════════════════════════════════════ */
+  .mv2-form-section {
+    padding: 56px 24px 64px;
+  }
+  .mv2-form-h {
+    font-size: clamp(36px, 10vw, 52px);
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+  .mv2-form-sub {
+    font-size: 14px;
+    margin-bottom: 36px;
+  }
+  /* All form fields stack — no side-by-side on small screens */
   .q2-row { grid-template-columns: 1fr; }
-  .mv2-process-item { grid-template-columns: 56px 1fr; }
+  /* Larger tap targets */
+  .q2-field input,
+  .q2-field select,
+  .q2-field textarea {
+    padding: 15px 16px;
+    font-size: 16px; /* Prevents iOS zoom-on-focus */
+  }
+  .q2-field label {
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+  .q2-field textarea { min-height: 110px; }
+  /* Submit button — full width on mobile for easy thumb tap */
+  .q2-submit {
+    width: 100%;
+    justify-content: center;
+    padding: 18px 24px;
+    font-size: 15px;
+    align-self: stretch;
+  }
+
+  /* ════════════════════════════════════════
+     FOOTER
+  ════════════════════════════════════════ */
+  .mv2-footer {
+    padding: 20px 24px;
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
 }
 </style>
 
