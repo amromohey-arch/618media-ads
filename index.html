@@ -406,9 +406,81 @@ src="https://www.facebook.com/tr?id=987926117385270&ev=PageView&noscript=1"
 
 /* ── MOBILE ───────────────────────────────────────── */
 @media (max-width: 680px) {
-  .mv2-hero-content { padding: 0 24px 52px; }
-  .mv2-video, .mv2-caps, .mv2-process, .mv2-form-section, .mv2-footer { padding-left: 24px; padding-right: 24px; }
-  .mv2-caps-grid { grid-template-columns: 1fr; }
+
+  /* ── HERO: stack image above text so full composition is visible ── */
+  .mv2-hero {
+    height: auto;
+    min-height: unset;
+    display: block;
+  }
+  /* The background-image div becomes a natural-ratio image on mobile */
+  .mv2-hero-bg {
+    position: relative;
+    inset: auto;
+    /* Intrinsic aspect ratio of the hero photo: ~5:8 portrait */
+    width: 100%;
+    aspect-ratio: 5 / 8;
+    background-size: cover;
+    background-position: center top;
+    transform: none;
+    animation: none;
+  }
+  /* Keep the gradient overlay but only on the bottom 40% of the image */
+  .mv2-hero-bg::after {
+    background: linear-gradient(
+      to bottom,
+      transparent 55%,
+      rgba(10,10,10,0.65) 78%,
+      rgba(10,10,10,0.98) 100%
+    );
+  }
+  /* Text block sits below the image, on the ink background */
+  .mv2-hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 36px 24px 52px;
+  }
+
+  /* ── CAPABILITY CARDS: one per screen, scroll through them ── */
+  .mv2-caps {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 64px;
+    padding-bottom: 0;
+  }
+  .mv2-caps-inner {
+    padding: 0;
+  }
+  /* Tag sits outside the grid with its own padding */
+  .mv2-caps .mv2-tag {
+    padding: 0 24px;
+    margin-bottom: 32px;
+    display: block;
+  }
+  .mv2-caps-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    border: none;
+    background: transparent;
+  }
+  /* Each card: full viewport height so you scroll one at a time */
+  .mv2-cap-item {
+    min-height: 80svh;
+    padding: 48px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: 1px solid var(--rule);
+    background: var(--ink);
+  }
+  .mv2-cap-item:last-child { border-bottom: none; }
+  .mv2-cap-num { font-size: 13px; margin-bottom: 28px; }
+  .mv2-cap-title { font-size: 32px; line-height: 1.08; margin-bottom: 20px; }
+  .mv2-cap-body { font-size: 15px; line-height: 1.7; max-width: 340px; }
+
+  /* ── Other sections ── */
+  .mv2-video, .mv2-process, .mv2-form-section { padding-left: 24px; padding-right: 24px; }
+  .mv2-footer { padding-left: 24px; padding-right: 24px; }
   .q2-row { grid-template-columns: 1fr; }
   .mv2-process-item { grid-template-columns: 56px 1fr; }
 }
